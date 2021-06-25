@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>kadai</title>
+		<link rel="stylesheet" href="style.css" >
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	
+	<body>
+		<h1>文豪とアルケミスト</h1>
+		<div id="app">
+			<h3><label><input type="checkbox" value="buki" v-model="myVisible1">武器種</label></h3>
+            	<p v-if="myVisible1"><label><input type="checkbox" v-model="yaiba">刃</label>
+									<label><input type="checkbox" v-model="yumi">弓</label>
+									<label><input type="checkbox" v-model="zyuu">銃</label>
+									<label><input type="checkbox" v-model="muti">鞭</p></label>
+			<h3>攻撃<input v-model.number="kougeki" type="number"></h3>
+			<h3><label><input type="checkbox" value="seisinn" v-model="myVisible3">精神</label></h3>
+				<p v-if="myVisible3"><label><input type="checkbox" v-model="seisinn1">安定</label>
+									<label><input type="checkbox" v-model="seisinn2">やや安定</label>
+									<label><input type="checkbox" v-model="seisinn3">やや不安定</label>
+									<label><input type="checkbox" v-model="seisinn4">不安定</p></label>
+			<h3><label><input type="checkbox" value="habatu" v-model="myVisible4">派閥</label></h3>
+				<p v-if="myVisible4"><label><input type="checkbox" v-model="habatuA">新思潮</label>
+									<label><input type="checkbox" v-model="habatuB">無頼派</label>
+									<label><input type="checkbox" v-model="habatuC">余裕派</label>
+									<label><input type="checkbox" v-model="habatuD">三田派</label>
+									<label><input type="checkbox" v-model="habatuE">白樺派</label>
+									<label><input type="checkbox" v-model="habatuF">新感覚派</label>
+									<label><input type="checkbox" v-model="habatuG">新興芸術派</label></p>
+				<p v-if="myVisible4"><label><input type="checkbox" value="habatuH">アララギ派</label>
+									<label><input type="checkbox" v-model="habatuI">北原一門</label>
+									<label><input type="checkbox" v-model="habatuJ">尾崎一門</label>
+									<label><input type="checkbox" v-model="habatuK">正岡一門</label>
+									<label><input type="checkbox" v-model="habatuL">プロレタリア</label>
+									<label><input type="checkbox" v-model="habatuM">明星</label></p>
+				<p v-if="myVisible4"><label><input type="checkbox" v-model="habatuN">海外</label>
+									<label><input type="checkbox" v-model="habatuO">なし</p></label>
+
+			<table>
+				<thead>
+				<th v-for="item in header">{{ item }}</th>
+				</thead>
+			<tbody>
+				<tr v-for="line in bunngouList" v-if="yaiba">
+					<td v-for="item in line">{{ item }}</td>
+				</tr>
+
+				<tr v-for="line in kougekiList" v-if="kougeki">
+					<td v-for="item in line">{{ item }}</td>
+				</tr>
+
+				<tr v-for="line in seisinnList" v-if="seisinn">
+					<td v-for="item in line">{{ item }}</td>
+				</tr>
+
+				<tr v-for="line in habatuList" v-if="habatu">
+					<td v-for="item in line">{{ item }}</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					myVisible1: false,
+					myVisible2: false,
+					myVisible3: false,
+					myVisible4: false,
+					yaiba: false,
+					yumi: false,
+					zyuu: false,
+					muti: false,
+
+					header: ['No.', '名前', '武器種', '攻撃', '精神', '派閥'],
+					bunngouList: [
+						['01', '芥川龍之介', '刃', '', '不安定', '新思潮'],
+						['02', '太宰治', '刃', '', '不安定', '無頼派'],
+						['03', '萩原朔太郎', '銃', '', '不安定', '北原一門'],
+						['04', '中原中也', '銃', '', 'やや不安定', 'なし'],
+						['05', '泉鏡花', '刃', '', 'やや安定', '尾崎一門'],
+						['06', '夏目漱石', '刃', '', 'やや不安定', '余裕派'],
+						['07', '宮沢賢治', '銃', '', 'やや安定', 'なし'],
+						['08', '谷崎潤一郎', '刃', '', '安定', '新思潮'],
+						['09', '永井荷風', '弓', '', '安定', '三田派'],
+						['10', '島崎藤村', '弓', '', '普通', 'なし'],
+						['11', '田山花袋', '弓', '', 'やや安定', 'なし'],
+						['12', '志賀直哉', '刃', '', '安定', '白樺派'],
+					]
+				},
+				methods: {
+
+				}
+
+			})
+		</script>
+	</body>
+</html>
